@@ -13,31 +13,31 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             // Add other columns as needed for the 'products' table
         });
         Schema::table('order_items', function (Blueprint $table) {
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             // Add other columns as needed for the 'products' table
         });
 
         Schema::table('products', function (Blueprint $table) {
 
-            $table->foreign('merchant_id')->references('id')->on('merchants');
+            $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade')->onUpdate('cascade');
             // Add other columns as needed for the 'products' table
         });
 
         Schema::table('merchants', function (Blueprint $table) {
 
-            $table->foreign('admin_id')->references('id')->on('users');
-            $table->foreign('country_code')->references('code')->on('countries');
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('country_code')->references('code')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             // Add other columns as needed for the 'merchants' table
         });
 
         Schema::table('users', function (Blueprint $table) {
 
-            $table->foreign('country_code')->references('code')->on('countries');
+            $table->foreign('country_code')->references('code')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             // Add other columns as needed for the 'users' table
         });
 
